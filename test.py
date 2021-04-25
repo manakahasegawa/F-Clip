@@ -96,7 +96,7 @@ def build_model(cpu=False):
     model = FClip(model)
 
     if M.backbone == "hrnet":
-        model = model.cuda()
+        model = model
         model = torch.nn.DataParallel(model)
 
     if C.io.model_initialize_file:
