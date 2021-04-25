@@ -193,10 +193,10 @@ class FClipDetect:
             config_file = 'config/fclip_HR.yaml'
         else:
             raise ValueError("")
-
+        C.update(C.from_yaml(filename='config/base.yaml'))
         C.update(C.from_yaml(filename=config_file))
         M.update(C.model)
-        # C.io.model_initialize_file = ckpt
+        C.io.model_initialize_file = ckpt
 
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         iscpu = False if torch.cuda.is_available() else True
